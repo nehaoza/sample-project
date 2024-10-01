@@ -1,5 +1,6 @@
-Feature: List the Iphone prices of Amazon.co.uk
+Feature: List the Iphone prices of flipkart.com
 
 
-  Scenario: Sample Scenario
-    Given Sample step is executed
+  Scenario: Search for iphone and print prices
+    Given Initial setUp to navigate flipkart.com
+    When  User search for "iphone"
