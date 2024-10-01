@@ -13,7 +13,6 @@
         <maven.compiler.target>17</maven.compiler.target>
         <cucumner-version>7.11.2</cucumner-version>
         <record.builder.version>36</record.builder.version>
-
         <error-prone.version>2.18.0</error-prone.version>
     </properties>
 
@@ -30,7 +29,6 @@
             <version>${cucumner-version}</version>
             <scope>compile</scope>
         </dependency>
-
         <!-- https://mvnrepository.com/artifact/org.seleniumhq.selenium/selenium-java -->
         <dependency>
             <groupId>org.seleniumhq.selenium</groupId>
