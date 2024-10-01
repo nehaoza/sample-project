@@ -13,9 +13,6 @@
         <maven.compiler.target>17</maven.compiler.target>
         <cucumner-version>7.11.2</cucumner-version>
         <record.builder.version>36</record.builder.version>
-
-        <spotless.version>2.35.0</spotless.version>
-        <error-prone.version>2.18.0</error-prone.version>
     </properties>
 
     <dependencies>
@@ -31,6 +28,12 @@
             <version>${cucumner-version}</version>
             <scope>compile</scope>
         </dependency>
+        <!-- https://mvnrepository.com/artifact/org.seleniumhq.selenium/selenium-java -->
+        <dependency>
+            <groupId>org.seleniumhq.selenium</groupId>
+            <artifactId>selenium-java</artifactId>
+            <version>4.25.0</version>
+        </dependency>
 
         <!--<dependency>
             <groupId>io.rest-assured</groupId>
@@ -45,34 +48,6 @@
             <scope>test</scope>
         </dependency>-->
         <dependency>
-            <groupId>org.apache.logging.log4j</groupId>
-            <artifactId>log4j-api</artifactId>
-            <version>2.7</version>
-        </dependency>
-        <dependency>
-            <groupId>org.apache.logging.log4j</groupId>
-            <artifactId>log4j-core</artifactId>
-            <version>2.7</version>
-        </dependency>
-        <dependency>
-            <groupId>org.apache.logging.log4j</groupId>
-            <artifactId>log4j-slf4j-impl</artifactId>
-            <version>2.7</version>
-        </dependency>
-        <dependency>
-            <groupId>io.soabase.record-builder</groupId>
-            <artifactId>record-builder-processor</artifactId>
-            <version>${record.builder.version}</version>
-            <scope>provided</scope>
-        </dependency>
-        <dependency>
-            <groupId>io.soabase.record-builder</groupId>
-            <artifactId>record-builder-core</artifactId>
-            <version>${record.builder.version}</version>
-            <scope>provided</scope>
-        </dependency>
-
-        <dependency>
             <groupId>org.assertj</groupId>
             <artifactId>assertj-core</artifactId>
             <!-- use 2.9.1 for Java 7 projects -->
@@ -83,52 +58,6 @@
 
     <build>
     <plugins>
-        <plugin>
-            <groupId>com.diffplug.spotless</groupId>
-            <artifactId>spotless-maven-plugin</artifactId>
-            <version>${spotless.version}</version>
-            <configuration>
-                <!-- optional: limit format enforcement to just the files changed by this feature branch -->
-                <ratchetFrom>origin/main</ratchetFrom>
-                <formats>
-                    <!-- you can define as many formats as you want, each is independent -->
-                    <format>
-                        <!-- define the files to apply to -->
-                        <includes>
-                            <include>*.md</include>
-                            <include>.gitignore</include>
-                            <include>*.java</include>
-                        </includes>
-                        <!-- define the steps to apply to those files -->
-                        <trimTrailingWhitespace/>
-                        <endWithNewline/>
-                        <indent>
-                            <tabs>true</tabs>
-                            <spacesPerTab>4</spacesPerTab>
-                        </indent>
-                    </format>
-                </formats>
-                <!-- define a language-specific format -->
-                <java>
-                    <!-- no need to specify files, inferred automatically, but you can if you want -->
-
-                    <!-- apply a specific flavor of google-java-format and reflow long strings -->
-                    <googleJavaFormat>
-                        <version>1.8</version>
-                        <style>AOSP</style>
-                        <reflowLongStrings>true</reflowLongStrings>
-                    </googleJavaFormat>
-                </java>
-            </configuration>
-            <executions>
-                <execution>
-                    <goals>
-                        <goal>check</goal>
-                    </goals>
-                    <phase>compile</phase>
-                </execution>
-            </executions>
-        </plugin>
         <plugin>
             <groupId>org.apache.maven.plugins</groupId>
             <artifactId>maven-compiler-plugin</artifactId>
@@ -144,16 +73,6 @@
                     <arg>java.management/sun.management=ALL-UNNAMED</arg>
                 </compilerArgs>
                 <annotationProcessorPaths>
-                    <path>
-                        <groupId>com.google.errorprone</groupId>
-                        <artifactId>error_prone_core</artifactId>
-                        <version>${error-prone.version}</version>
-                    </path>
-                    <path>
-                            <groupId>io.soabase.record-builder</groupId>
-                            <artifactId>record-builder-processor</artifactId>
-                            <version>${record.builder.version}</version>
-                    </path>
                 </annotationProcessorPaths>
             </configuration>
         </plugin>
