@@ -12,34 +12,26 @@ import org.openqa.selenium.chrome.ChromeDriver;
 
 import java.util.List;
 import java.util.concurrent.TimeUnit;
-public class SampleSteps {
+public class SearchIphonePriceSteps {
     WebDriver driver;
-    @Given("Initial setUp to navigate flipkart.com")
-    // Setup ChromeDriver using WebDrivermanager
-    public void sample_step_is_executed() {
+    @Given("User navigate to flipkart.com")
+    public void navigateToFlipkart() {
         WebDriverManager.chromedriver().setup();
         driver = new ChromeDriver();
 
-        // Open Flipkart website
         driver.get("https://www.flipkart.com/");
 
-        // Maximise the browser window
         driver.manage().window().maximize();
     }
-
     @When("User search for {string}")
     public void searchIphone(String productName) {
-        //find the search box and enter the product name
         WebElement searchIphone = driver.findElement(By.name("q"));
         searchIphone.sendKeys(productName);
         searchIphone.submit();
     }
     @Then("User should see the list of iphone prices")
     public void printListOfIphonePrices() {
-        //Wait for search results to load
         driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
-
-        //Get all elements that display prices of iphone
         List<WebElement> iphonePriceElements = driver.findElements(By.xpath("//div[contains(@class, 'cN1yYO')]"));
         System.out.println("Number of iphones available in page  " + iphonePriceElements.size());
 
@@ -49,7 +41,6 @@ public class SampleSteps {
     }
     @And("User should see the list of iphone models")
     public void listOfIphoneModelName() {
-        //Get all elements that display models of iphone
         List<WebElement> iphoneModelElements = driver.findElements(By.xpath("//div[contains(@class, 'KzDlHZ')]"));
         System.out.println("Number of iphones available in page  " + iphoneModelElements.size());
 
