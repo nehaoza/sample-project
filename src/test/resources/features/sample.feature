@@ -1,4 +1,4 @@
-Feature: List the Iphone prices of flipkart.com
+Feature: List the Iphone prices and models of flipkart.com
 
  Scenario: Search for iphone and print prices
     Given Initial setUp to navigate flipkart.com
