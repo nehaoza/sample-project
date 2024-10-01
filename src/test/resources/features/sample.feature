@@ -1,5 +1,7 @@
-Feature: Sample Feature
+Feature: List the Iphone prices and models of flipkart.com
 
-
-  Scenario: Sample Scenario
-    Given Sample step is executed
+ Scenario: Search for iphone and print prices
+    Given Initial setUp to navigate flipkart.com
+    When  User search for "iphone"
+    Then User should see the list of iphone prices
+    And User should see the list of iphone models
