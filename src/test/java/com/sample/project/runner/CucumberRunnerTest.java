@@ -5,7 +5,7 @@ import io.cucumber.junit.CucumberOptions;
 import org.junit.runner.RunWith;
 
 @RunWith(Cucumber.class)
-@CucumberOptions(
+@CucumberOptions( tags ="not @ignore",
         features = {"classpath:features"},
         glue = {"com.sample.project"})
 public class CucumberRunnerTest {}
